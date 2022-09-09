@@ -5,10 +5,48 @@
             <h3>Create To Do</h3>
 
 
-            <form action="" method="post">
-                {{form.as_p}}
 
-            </form>
+    <form action="" method="post">
+      
+
+        {% for field in form %}
+        <div class="field">
+            <label class="label">{{ field.label_tag }}</label>
+            {% if field.label == 'Title' %}
+           
+                <div class="control">
+                  <input class="input" type="text" maxlength="30" required placeholder="{{ field.label }}" name="{{ field.label }}">
+                </div>
+              
+
+            {% elif  field.label == 'Description' %}
+
+            <div class="control">
+                <textarea class="textarea" placeholder="{{ field.label }}" required name="{{ field.label }}" id="id_description"></textarea>
+              </div>
+
+
+              {% elif  field.label == 'Is completed' %}
+              <label class="checkbox">
+                <input type="checkbox" name="is_completed" id="id_is_completed">
+                Is Completed
+              </label>
+
+           
+
+
+            {% endif %}
+        </div>
+
+       
+    {% endfor %}
+        
+
+        <input class="input is-primary" type="submit" placeholder="Primary input">
+
+    </form>
+
+           
 
            
 {%endblock content%}
