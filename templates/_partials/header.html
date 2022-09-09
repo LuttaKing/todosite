@@ -1,0 +1,56 @@
+{%load static%}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href={% url 'home' %}>
+        <img src="{% static 'img/bulma-logo.png' %}" width="112" height="28">
+      </a>
+  
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+        {% if request.user.is_authenticated %}
+      <div class="navbar-start">
+        <div class="navbar-item">
+            <a {% url 'create_todo' %} class="button is-danger">
+                <strong>Create Todo</strong>
+              </a>
+        </div>
+        
+  
+       
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Username
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Log Out
+            </a>
+           
+          </div>
+        </div>
+      </div>
+  {%else%}
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href={% url 'login' %} class="button is-primary">
+                <strong>Login</strong>
+              </a>
+           
+            <a href={% url 'register' %} class="button is-primary">
+                <strong>Register</strong>
+              </a>
+          </div>
+        </div>
+      </div>
+      {%endif%}
+    </div>
+  </nav>
