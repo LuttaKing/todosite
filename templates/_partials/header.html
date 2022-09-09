@@ -13,13 +13,14 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-item">
+        <a href={% url 'create_todo' %} class="button is-danger">
+            <strong>Create Todo</strong>
+          </a>
+    </div>
         {% if request.user.is_authenticated %}
       <div class="navbar-start">
-        <div class="navbar-item">
-            <a {% url 'create_todo' %} class="button is-danger">
-                <strong>Create Todo</strong>
-              </a>
-        </div>
+       
         
   
        
