@@ -2,9 +2,61 @@
 {% load static %}
 
 {%block content%}
-    <img src="{% static 'img/logo.png' %}" alt="" srcset="">
-    <ul>
-        <li>WE we we we we</li>
-    </ul>
+<h2>My List Of Todos</h2>
+
+
+{% if todos %}
+
+<table class="table is-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for todo in todos%}
+<tr>
+    <td>{{todo.title}}</td>
+    <td>{{todo.description}}</td>
+
+    
+    <td>{% if todo.is_completed %}
+YES
+        {%else%}
+    NO
+        {% endif %}</td>
+
+    <td>
+        <a href="">
+            <button class="button is-info is-light is-small">View</button>
+        </a>
+
+        <a href="">
+            <button class="button is-info is-small">Edit</button>
+        </a>
+        
+        
+    </td>
+    
+</tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+{% else %}
+<div class="notification is-warning">
+    <button class="delete"></button>
+    No To dos Added with this account.Create todo her <a href={% url 'create_todo' %} >
+        <strong>Create Todo</strong>
+      </a>
+      <br>
+    adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+  </div>
+
+{% endif %}
+
     
     {%endblock content%}
