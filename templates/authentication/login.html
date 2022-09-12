@@ -2,5 +2,48 @@
 {% load static %}
 
 {%block content%}
-<h3>Login Here</h3>
+<h3 class="title">Login Here</h3>
+{% include '_partials/messages.html'%}
+<div class="columns">
+    <form action={% url 'login'%} method="post">
+        {%csrf_token%}
+    <div class="column is-three-fifths">
+        <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" name="username" required value="{{data.username}}">
+            </div>
+          </div>
+          
+          <!-- <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="email" name="email" required value="{{data.email}}">
+            </div>
+          </div> -->
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="text" name="password" required>
+            </div>
+          </div>
+          
+        
+
+          <div class="control">
+            <button class="button is-primary" type="submit">Login</button>
+          </div>
+
+          <p>
+            Have acoount? <a href={% url 'register' %}>Register Here</a>
+          </p>
+    </div>
+
+    <div class="column"></div>
+    <div class="column"></div>
+</form>
+  </div>
+
+
 {%endblock content%}

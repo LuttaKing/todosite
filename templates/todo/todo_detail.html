@@ -1,9 +1,37 @@
 {% extends '_partials/base.html'%}
+
+{% block title%}
+
+      Todo:{{todo.title}}
+
+{% endblock%}
+
 {% load static %}
 
 {%block content%}
-            <h3>To Do Detail</h3>
+<h1 class="title">Detail</h1>
 
+<div class="card">
+  <header class="card-header">
+    <p class="card-header-title">
+     {{todo.title}}
+    </p>
+   
+  </header>
+  <div class="card-content">
+    <div class="content">
+      {{todo.description}}
+     
+      <br>
+      <time datetime="2016-1-1">Created: {{todo.updated_at}}</time>
+    </div>
+  </div>
+  <footer class="card-footer">
+    
+    <a href="#" class="card-footer-item ">Edit</a>
+    <a href={% url 'todo_delete' todo.id %} class="card-footer-item ">Delete</a>
+  </footer>
+</div>
 
     
 

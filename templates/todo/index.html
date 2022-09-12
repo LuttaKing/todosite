@@ -2,7 +2,9 @@
 {% load static %}
 
 {%block content%}
-<h2>My List Of Todos</h2>
+<h1 class="title">List of Todo</h1>
+
+{% include '_partials/messages.html'%}
 
 
 {% if todos %}
@@ -30,7 +32,7 @@ YES
         {% endif %}</td>
 
     <td>
-        <a href="">
+        <a href={% url  'todo_detail' todo.pk %}>
             <button class="button is-info is-light is-small">View</button>
         </a>
 
@@ -44,6 +46,20 @@ YES
 </tr>
         {%endfor%}
     </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                <a href="?filter=all">All {{all_count}}</a>
+            </th>
+            <th>
+                <a href="?filter=incomplete">{{incompleted_count}} REmaining</a>
+            </th>
+            <th>
+                <a href="?filter=complete">{{completed_count}} Completed</a>
+            </th>
+           
+        </tr>
+    </tfoot>
 </table>
 
 {% else %}

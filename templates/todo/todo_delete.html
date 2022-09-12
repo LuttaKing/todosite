@@ -1,0 +1,27 @@
+{% extends '_partials/base.html'%}
+
+{% block title%}
+
+      Delete:{{todo.title}}
+
+{% endblock%}
+
+{%block content%}
+<h1 class="title">Delete</h1>
+
+<form action={% url 'todo_delete' todo.id %} method="post">
+    {%csrf_token%}
+    <p>Are you sure</p>
+
+    <!-- <input class="input is-primary" type="submit" value="YES"> -->
+    <button class="button is-danger" type="submit" value="YES">Confirm</button>
+
+
+</form>
+
+    
+
+           
+
+           
+{%endblock content%}

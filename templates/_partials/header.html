@@ -13,27 +13,31 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-item">
-        <a href={% url 'create_todo' %} class="button is-danger">
-            <strong>Create Todo</strong>
-          </a>
-    </div>
+     
         {% if request.user.is_authenticated %}
       <div class="navbar-start">
-       
+        <div class="navbar-item">
+          <a href={% url 'create_todo' %} class="button is-danger">
+              <strong>Create Todo</strong>
+            </a>
+      </div>
         
   
        
   
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            Username
+         {{request.user.username}}
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <form action={% url 'logout_user'%} method="post">
+              {%csrf_token%}
+              <input type="submit" value="SignOUt">
+            </form>
+            <!-- <a class="navbar-item">
               Log Out
-            </a>
+            </a> -->
            
           </div>
         </div>
