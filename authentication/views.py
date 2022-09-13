@@ -38,7 +38,7 @@ def send_activation_email(user,request):
     })
 
     email=EmailMessage(subject=email_subject,body=email_body,from_email=settings.EMAIL_FROM_USER,to=[user.email])
-    # email.send()
+    # email.send() no thread, use next
     EmailThread(email).start()
 
 
@@ -58,6 +58,7 @@ def register(request):
         if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
             messages.add_message(request,messages.ERROR, "Username/email is taken")
             context["has_error"] = True
+            return render(request,'authentication/register.html',context, status=409)
 
         if context["has_error"]:
             return render(request,'authentication/register.html',context)
@@ -66,7 +67,7 @@ def register(request):
         user.set_password(password)
         user.save()
 
-        send_activation_email(user,request)
+        # send_activation_email(user,request)
 
 
         messages.add_message(request,messages.SUCCESS, f"Account created for {email}, Check inbox for activation link")
