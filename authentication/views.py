@@ -4,10 +4,10 @@ from django.contrib import messages
 from .models import User
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
-from helpers.decoratoz import authed_user_block
+from helpers.decoratoz import block_authed_user
 
 
-@authed_user_block
+@block_authed_user
 def register(request):
     if request.method =="POST":
         context={'has_error':False,'data':request.POST}
@@ -36,7 +36,7 @@ def register(request):
 
     return render(request,'authentication/register.html')
 
-@authed_user_block
+@block_authed_user
 def login_user(request):
     if request.method =="POST":
         context={'has_error':False,'data':request.POST}

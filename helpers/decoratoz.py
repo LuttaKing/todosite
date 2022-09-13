@@ -7,7 +7,7 @@ def check_user(user):
 user_logout_required = user_passes_test(check_user,'/',None)
 
 
-def authed_user_block(viewfunc):
+def block_authed_user(viewfunc):
 
     return user_logout_required(viewfunc)
 
