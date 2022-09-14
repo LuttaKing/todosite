@@ -40,7 +40,6 @@ def create_todo(request):
         title = request.POST.get("Title")
         description = request.POST.get("Description")
         is_complete = request.POST.get("is_completed", False)
-        print(is_complete)
 
         todo = Todo()
         todo.title = title

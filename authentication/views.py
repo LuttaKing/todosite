@@ -85,9 +85,9 @@ def login_user(request):
 
         user = authenticate(request,username=username,password=password)
 
-        if not user.is_email_verified:
-            messages.add_message(request,messages.ERROR, "Email not verified")
-            return render(request,'authentication/login.html',context)
+        # if not user.is_email_verified:
+        #     messages.add_message(request,messages.ERROR, "Email not verified")
+        #     return render(request,'authentication/login.html',context)
 
         if not user:
             messages.add_message(request,messages.ERROR, "Login Errorfound")
